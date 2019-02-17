@@ -3,4 +3,4 @@ project(MKMultithread)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(MKMultithread main.cpp utils.cpp utils.h Const.h)
+add_executable(MKMultithread main.cpp Const.h)

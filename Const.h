@@ -1,10 +1,7 @@
-//
-// Created by Sergey Sandalov on 07.01.2019.
-//
-
-#ifndef MKMULTITHREAD_CONST_H
-#define MKMULTITHREAD_CONST_H
-const long N = 10e6;
+#include "pcg_random.hpp"
+#include <thread>
+#include <vector>
+#include <c++/random>
+const long N = 20000000l;
 const int threads_num = 4;
-const long length = N / threads_num;
-#endif //MKMULTITHREAD_CONST_H
+const long generator_length = N / threads_num;
