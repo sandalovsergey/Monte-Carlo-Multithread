@@ -31,7 +31,7 @@ void count(std::vector<double>& res, int id, std::vector<pcg64> generatorsX, std
     pcg64 rngX = generatorsX[id];
     pcg64 rngY = generatorsY[id];
     std::uniform_real_distribution<double> distX(-1, 1);
-    std::uniform_real_distribution<double> distY(-1,1);
+    std::uniform_real_distribution<double> distY(-1, 1);
 
     long cnt = 0;
     double x,y;
@@ -42,7 +42,7 @@ void count(std::vector<double>& res, int id, std::vector<pcg64> generatorsX, std
             ++cnt;
     }
 
-    res[id] = cnt;
+    res.push_back(cnt);
 }
 
 double multiThread(std::vector<pcg64> generatorsX, std::vector<pcg64> generatorsY){
@@ -66,6 +66,7 @@ double multiThread(std::vector<pcg64> generatorsX, std::vector<pcg64> generators
     }
 
     long result = 0;
+    std::cout<<"\n\nRES SIZE IS: " << res.size() << std::endl;
     for (int i = 0; i < threads_num; ++i) {
         result += res[i];
     }
