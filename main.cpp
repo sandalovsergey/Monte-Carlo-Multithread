@@ -1,4 +1,7 @@
 #include "Const.h"
+#include <mutex>
+std::mutex locker;
+
 void fillCoord(pcg64 genX, pcg64 genY, std::vector<double>& coordX, std::vector<double>& coordY,
         int start_index, long length) {
     std::uniform_real_distribution<double> distX(-1, 1);
@@ -42,7 +45,9 @@ void count(std::vector<double>& res, int id, std::vector<pcg64> generatorsX, std
             ++cnt;
     }
 
+    locker.lock();
     res.push_back(cnt);
+    locker.unlock();
 }
 
 double multiThread(std::vector<pcg64> generatorsX, std::vector<pcg64> generatorsY){
@@ -66,7 +71,7 @@ double multiThread(std::vector<pcg64> generatorsX, std::vector<pcg64> generators
     }
 
     long result = 0;
-    std::cout<<"\n\nRES SIZE IS: " << res.size() << std::endl;
+
     for (int i = 0; i < threads_num; ++i) {
         result += res[i];
     }
